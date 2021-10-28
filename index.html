@@ -1,83 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/misFunciones.js"></script>
     
-    <title>Reto3</title>
+    <title>Reto4</title>
 </head>
 <body>
+<div>
+<title></title>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td {
+        width: 140px;
+        padding: 6px;
+    }
+    td button {
+        padding: 6px;
+        margin-right: 10px;
+    }
+</style>
 
-    <h1> Categorias</h1>
+</div>
+
+    <h1> Categories</h1>
     <div id="resultado1"></div>
-    <button onclick="traerInformacionCategorias()" > Consultar Categorias</button>
+    <button onclick="traerInformacionCategorias()" > Consultar</button>
     <div>
+        <input type="text" id="Cid" placeholder="id" disabled>
         <input type="text" id="Cname" placeholder="name">
-        <input type="text" id="Cdescription" placeholder="description">             
+        <input type="text" id="Cdescription" placeholder="description">
     </div>
-    <button onclick="guardarInformacionCategorias()">Guardar Categorias</button>
+        <button id="CbuttonSave" onClick="guardarInformacionCategorias()" disabled="false">Guardar</button>
+        <button id="CbuttonUpdate" onClick="actualizarInformacionCategorias()" disabled="true">Actualizar</button>
+        <button id="CbuttonClear" onClick="clearCategoryForm()">Limpiar</button>
 
 
     <h1> Ortopedics</h1>
     <div id="resultado2"></div>
     <button onclick="traerInformacionOrtopedics()" > Consultar Ortopedics</button>
     <div>
+        <input type="text" id="Oid" placeholder="id" disabled>
         <input type="text" id="Oname" placeholder="name">
         <input type="text" id="Obrand" placeholder="brand">
         <input type="number" id="Oyear" placeholder="year">
         <input type="text" id="Odescription" placeholder="description">    
     </div>
-    <button onclick="guardarInformacionOrtopedics()">Guardar Ortopedics</button>
+        <button id="ObuttonSave" onClick="guardarInformacionOrtopedics()" disabled="false">Guardar</button>
+        <button id="ObuttonUpdate" onClick="actualizarInformacionOrtopedics()" disabled="true">Actualizar</button>
+        <button id="ObuttonClear" onClick="clearOrtopedicForm()">Limpiar</button>
 
 
     <h1> Clients</h1>
     <div id="resultado3"></div>
-    <button onclick="traerInformacionClients()" > Consultar Clients</button>
+    <button onclick="traerInformacionClients()" > Consultar</button>
     
     <div>
-        <input type="mail" id="CLemail" placeholder="email">
-        <input type="text" id="CLpassword" placeholder="password">
-        <input type="text" id="CLname" placeholder="name">
-        <input type="number" id="CLage" placeholder="age">  
+        <input type="text" id="Clid" placeholder="id" disabled>
+        <input type="mail" id="Clemail" placeholder="email">
+        <input type="password" id="Clpassword" placeholder="password">
+        <input type="text" id="Clname" placeholder="name">
+        <input type="number" id="Clage" placeholder="age">
     </div>
-    <button onclick="guardarInformacionClients()">Guardar Clients</button>
+        <button id="ClbuttonSave" onClick="guardarInformacionClients()" disabled="false">Guardar</button>
+        <button id="ClbuttonUpdate" onClick="actualizarInformacionClients()" disabled="true">Actualizar</button>
+        <button id="ClbuttonClear" onClick="clearClientForm()">Limpiar</button>
 
 
     <h1> Messages</h1>
     <div id="resultado4"></div>
-    <button onclick="traerInformacionMessages()" > Consultar Messages</button>
+    <button onclick="traerInformacionMessages()" > Consultar </button>
     
     <div>
-        
+        <input type="text" id="Mid" placeholder="id" disabled>
         <input type="text" id="MmessageText" placeholder="messageText">
         
     </div>
-    <button onclick="guardarInformacionMessages()">Guardar Messages</button>
+        <button  id="MbuttonSave" onclick="guardarInformacionMessages()" disabled="false">Guardar</button>
+        <button  id="MbuttonUpdate" onclick="actualizarInformacionMessages()" disabled="true">Actualizar</button>
+        <button  id="MbuttonClear" onclick="clearMessageForm()">Limpiar</button>
 
 
     <h1> Reservations</h1>
     <div id="resultado5"></div>
-    <button onclick="traerInformacionReservations()" > Consultar Reservations</button>
-    
+    <button onclick="traerInformacionReservations()" > Consultar </button>
+
     <div>
+        <input type="text" id="Rid" placeholder="id" disabled>
+        <label>StarDate: </label>
         <input type="date" id="RstartDate" placeholder="startDate">
+        <label>DevolutionDate: </label>
         <input type="date" id="RdevolutionDate" placeholder="devolutionDate">
-        <input type="text" id="Rstatus" placeholder="status">
-        
+        <label>Status: </label>
+        <select id="Rstatus" name="status">
+            <option value="Programado">Programado</option>option>
+            <option value="Cancelado">Cancelado</option>option>
+            <option value="Realizado">Realizado</option>option>
+        </select>
     </div>
-    <button onclick="guardarInformacionReservations()">Guardar Reservations</button>
+
+    <button id="RbuttonSave" onclick="guardarInformacionReservations()" disabled="false">Guardar</button>
+    <button  id="RbuttonUpdate" onclick="actualizarInformacionReservations()" disabled="true">Actualizar</button>
+    <button  id="RbuttonClear" onclick="clearReservationForm()">Limpiar</button>
 
 
     <h1> Admins</h1>
     <div id="resultado6"></div>
-    <button onclick="traerInformacionAdmins()" > Consultar Admin</button>
+    <button onclick="traerInformacionAdmins()" > Consultar </button>
 
     <div>
+        <input type="text" id="Aid" placeholder="id" disabled>
         <input type="text" id="Aname" placeholder="name">
-        <input type="mail" id="Aemail" placeholder="email">
+        <input type="email" id="Aemail" placeholder="email">
+        <input type="password" id="Apassword" placeholder="password">
 
     </div>
-    <button onclick="guardarInformacionAdmins()">Guardar Admins</button>
-
+        <button  id="AbuttonSave" onclick="guardarInformacionAdmins()" disabled="false">Guardar</button>
+        <button  id="AbuttonUpdate" onclick="actualizarInformacionAdmins()" disabled="true">Actualizar</button>
+        <button  id="AbuttonClear" onclick="clearAdminForm()">Limpiar</button>
 </body>
 </html>
