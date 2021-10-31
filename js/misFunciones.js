@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    traerInformacionCategorias();
+});
+
 function traerInformacionCategorias() {
     $.ajax({
         url: "http://localhost:8080/api/Category/all",
@@ -11,19 +15,22 @@ function traerInformacionCategorias() {
 }
 
 function pintarRespuesta(respuesta) {
-
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].id + "</td>";
-        myTable += "<td>" + respuesta[i].name + "</td>";
-        myTable += "<td>" + respuesta[i].description + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoCategorias(" +  respuesta[i].id + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionCategorias(" +  respuesta[i].id + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
+    let myTable = `<div class="container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable += `<div class="card m-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${respuesta[i].name}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${respuesta[i].description}</h6>
+                  <button class="btn btn-danger" onclick = "obtenerItemEspecificoCategorias(${respuesta[i].id})">Editar</button>
+                  <button class="btn btn-danger" onclick = "borrarInformacionCategorias(${respuesta[i].id})">Eliminar</button>
+                </div>
+            </div>`
     }
-    myTable += "</table>";
-    $("#resultado1").html(myTable);
+
+    myTable+= "</div></div>";
+    $("#resultado1").append(myTable);
+
+
 }
 
 function guardarInformacionCategorias() {
@@ -66,6 +73,7 @@ function borrarInformacionCategorias(idElemento) {
         url: 'http://localhost:8080/api/Category/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
+
         success: function (response) {
             console.log(response);
             alert("Se elimino correctamente");
@@ -85,6 +93,9 @@ function obtenerItemEspecificoCategorias(idItem) {
         type: 'GET',
         success: function (response) {
             console.log(response);
+
+
+
             var item = response;
 
             $("#Cid").val(item.id);
@@ -93,6 +104,8 @@ function obtenerItemEspecificoCategorias(idItem) {
 
             $("#CbuttonSave").attr('disabled', true);
             $("#CbuttonUpdate").attr('disabled', false);
+
+
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -142,6 +155,8 @@ function actualizarInformacionCategorias() {
             $("#Cname").val();
             $("#Cdescription").val();
 
+            alert("Se actualizo correctamente");
+            window.location.reload()
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -162,182 +177,190 @@ function actualizarInformacionCategorias() {
 
 
 ///=======================================================ortopedics=============================
+$(document).ready(function(){
+    traerInformacionOrtopedics();
+});
+
 function traerInformacionOrtopedics() {
-    $.ajax({
-        url: "http://localhost:8080/api/Ortopedic/all",
-        type: "GET",
-        datatype: "JSON",
-        success: function (respuesta) {
-            console.log(respuesta);
-            pintarRespuestaOrtopedics(respuesta);
-        }
-    });
-}
+        $.ajax({
+            url: "http://localhost:8080/api/Ortopedic/all",
+            type: "GET",
+            datatype: "JSON",
+            success: function (respuesta) {
+                console.log(respuesta);
+                pintarRespuestaOrtopedics(respuesta);
+            }
+        });
+    }
 
 function pintarRespuestaOrtopedics(respuesta) {
+    let myTable = `<div class=""container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable+=  `<div class="card m-2" style="width: 18rem;" >
+                        <div class="card-body">
+                          <h5 class="card-title">${respuesta[i].name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${respuesta[i].brand}</h6>
+                               <h6 className="card-subtitle mb-2 text-muted">${respuesta[i].year}</h6>
+                                <p class="card text">${respuesta[i].description}</p>
+                        <button class="btn btn-danger" onclick = "obtenerItemEspecificoOrtopedics(${respuesta[i].id})">Editar</button>
+                        <button class="btn btn-danger" onclick = "borrarInformacionOrtopedics(${respuesta[i].id})">Eliminar</button>
+                  </div>
+            </div>`
+                    }
+       myTable+= "</div></div>";
+    $("#resultado2").append(myTable);
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].id + "</td>";
-        myTable += "<td>" + respuesta[i].name + "</td>";
-        myTable += "<td>" + respuesta[i].brand + "</td>";
-        myTable += "<td>" + respuesta[i].year + "</td>";
-        myTable += "<td>" + respuesta[i].description + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoOrtopedics(" +  respuesta[i].id + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionOrtopedics(" +  respuesta[i].id + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
-    }
-    myTable += "</table>";
-    $("#resultado2").html(myTable);
 }
 
 function guardarInformacionOrtopedics() {
-    let var3 = {
-        name: $("#Oname").val(),
-        brand: $("#Obrand").val(),
-        year: $("#Oyear").val(),
-        description: $("#Odescription").val(),
-    };
+        let var3 = {
+            name: $("#Oname").val(),
+            brand: $("#Obrand").val(),
+            year: $("#Oyear").val(),
+            description: $("#Odescription").val(),
+        };
 
-    $.ajax({
-        type: 'POST',
-        contentType: "application/json; charset=utf-8",
-        dataType: 'JSON',
-        data: JSON.stringify(var3),
+        $.ajax({
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'JSON',
+            data: JSON.stringify(var3),
 
-        url: "http://localhost:8080/api/Ortopedic/save",
-
-
-        success: function (response) {
-            console.log(response);
-            console.log("Se guardo correctamente");
-            alert("Se guardo correctamente");
-            window.location.reload()
-
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-            window.location.reload()
-            alert("No se guardo correctamente");
+            url: "http://localhost:8080/api/Ortopedic/save",
 
 
-        }
-    });
+            success: function (response) {
+                console.log(response);
+                console.log("Se guardo correctamente");
+                alert("Se guardo correctamente");
+                window.location.reload()
 
-}
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                window.location.reload()
+                alert("No se guardo correctamente");
+
+
+            }
+        });
+
+    }
 function borrarInformacionOrtopedics(idElemento) {
 
-    //JSON= JavaScript Object Notation
-    $.ajax({
-        dataType: 'json',
-        url: 'http://localhost:8080/api/Ortopedic/' + idElemento,
-        type: 'DELETE',
-        contentType: 'application/json',
-        success: function (response) {
-            console.log(response);
-            alert("Se elimino correctamente");
-            window.location.reload()
-        },
+        //JSON= JavaScript Object Notation
+        $.ajax({
+            dataType: 'json',
+            url: 'http://localhost:8080/api/Ortopedic/' + idElemento,
+            type: 'DELETE',
+            contentType: 'application/json',
+            success: function (response) {
+                console.log(response);
+                alert("Se elimino correctamente");
+                window.location.reload()
+            },
 
-        error: function (jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
-        }
-    });
-}
+            }
+        });
+    }
 
 
 function obtenerItemEspecificoOrtopedics(idItem) {
-    $.ajax({
-        dataType: 'json',
-        url: 'http://localhost:8080/api/Ortopedic/' + idItem,
-        type: 'GET',
-        success: function (response) {
-            console.log(response);
-            var item = response;
+        $.ajax({
+            dataType: 'json',
+            url: 'http://localhost:8080/api/Ortopedic/' + idItem,
+            type: 'GET',
+            success: function (response) {
+                console.log(response);
+                var item = response;
 
-            $("#Oid").val(item.id);
-            $("#Oname").val(item.name);
-            $("#Obrand").val(item.brand);
-            $("#Oyear").val(item.year);
-            $("#Odescription").val(item.description);
+                $("#Oid").val(item.id);
+                $("#Oname").val(item.name);
+                $("#Obrand").val(item.brand);
+                $("#Oyear").val(item.year);
+                $("#Odescription").val(item.description);
 
-            $("#ObuttonSave").attr('disabled', true);
-            $("#ObuttonUpdate").attr('disabled', false);
-        },
+                $("#ObuttonSave").attr('disabled', true);
+                $("#ObuttonUpdate").attr('disabled', false);
+            },
 
-        error: function (jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
-        }
-    });
+            }
+        });
 
-}
+    }
 
 clearOrtopedicForm = () => {
 
-    $("#Aid").val('');
-    $("#Aname").val('');
-    $("#Obrand").val('');
-    $("#Oyear").val('');
-    $("#Odescription").val('');
+        $("#Oid").val('');
+        $("#Oname").val('');
+        $("#Obrand").val('');
+        $("#Oyear").val('');
+        $("#Odescription").val('');
 
-    $("#ObuttonSave").attr('disabled', false);
-    $("#ObuttonUpdate").attr('disabled', true);
-}
+        $("#ObuttonSave").attr('disabled', false);
+        $("#ObuttonUpdate").attr('disabled', true);
+    }
 
 function actualizarInformacionOrtopedics() {
 
-    if (!$('#Oid').val()) {
-        alert('Debes ingresar un id');
-        return;
-    }
-    var elemento = {
-        id: $("#Oid").val(),
-        name: $("#Oname").val(),
-        brand: $("#Obrand").val(),
-        year: $("#Oyear").val(),
-        description: $("#Odescription").val()
-    }
-
-    var dataToSend = JSON.stringify(elemento);
-    //JSON= JavaScript Object Notation
-    $.ajax({
-        type: "PUT",
-        url: 'http://localhost:8080/api/Ortopedic/update',
-        dataType: "text",
-        async: false,
-        data: dataToSend,
-        contentType: "application/json; charset=utf-8",
-
-        success: function (response) {
-
-            $("#miResultado").empty();
-            $("#Oid").val();
-            $("#Oname").val();
-            $("#Obrand").val();
-            $("#Oyear").val();
-            $("#Odescription").val();
-
-        },
-
-        error: function (jqXHR, textStatus, errorThrown) {
-
+        if (!$('#Oid').val()) {
+            alert('Debes ingresar un id');
+            return;
         }
-    });
+        var elemento = {
+            id: $("#Oid").val(),
+            name: $("#Oname").val(),
+            brand: $("#Obrand").val(),
+            year: $("#Oyear").val(),
+            description: $("#Odescription").val()
+        }
 
-    disableCreate = (id) => {
-        return ($('#' + id).val() != '') ? true : false;
-    }
+        var dataToSend = JSON.stringify(elemento);
+        //JSON= JavaScript Object Notation
+        $.ajax({
+            type: "PUT",
+            url: 'http://localhost:8080/api/Ortopedic/update',
+            dataType: "text",
+            async: false,
+            data: dataToSend,
+            contentType: "application/json; charset=utf-8",
 
-    disableUpdate = (id) => {
-        return ($('#' + id).val() != '') ? false : true;
-    }
+            success: function (response) {
+
+                $("#miResultado").empty();
+                $("#Oid").val();
+                $("#Oname").val();
+                $("#Obrand").val();
+                $("#Oyear").val();
+                $("#Odescription").val();
+
+                alert("Se actualizo correctamente");
+                window.location.reload()
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+        disableCreate = (id) => {
+            return ($('#' + id).val() != '') ? true : false;
+        }
+
+        disableUpdate = (id) => {
+            return ($('#' + id).val() != '') ? false : true;
+        }
 
 }
 
-
-
 ///===================================================clients ========================
+$(document).ready(function(){
+    traerInformacionClients();
+});
 function traerInformacionClients() {
     $.ajax({
         url: "http://localhost:8080/api/Client/all",
@@ -352,20 +375,21 @@ function traerInformacionClients() {
 
 function pintarRespuestaClients(respuesta) {
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].idClient + "</td>";
-        myTable += "<td>" + respuesta[i].email + "</td>";
-        //myTable +="<td>"  + respuesta[i].password+"</td>";
-        myTable += "<td>" + respuesta[i].name + "</td>";
-        myTable += "<td>" + respuesta[i].age + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoClients(" +  respuesta[i].idClient + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionClients(" +  respuesta[i].idClient + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
+    let myTable = `<div class=""container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable+=  `<div class="card m-2" style="width: 18rem;" >
+                        <div class="card-body">
+                          <h5 class="card-title">${respuesta[i].name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${respuesta[i].email}</h6>
+                               <h6 className="card-subtitle mb-2 text-muted">${respuesta[i].age}</h6>
+                        <button class="btn btn-danger" onclick = "obtenerItemEspecificoClients(${respuesta[i].idClient})">Editar</button>
+                        <button class="btn btn-danger" onclick = "borrarInformacionClients(${respuesta[i].idClient})">Eliminar</button>
+                  </div>
+            </div>`
     }
-    myTable += "</table>";
-    $("#resultado3").html(myTable);
+    myTable+= "</div></div>";
+    $("#resultado3").append(myTable);
+
 }
 
 function guardarInformacionClients() {
@@ -494,6 +518,8 @@ function actualizarInformacionClients() {
             $("#Clpassword").val();
             $("#Clage").val();
 
+            alert("Se actualizo correctamente");
+            window.location.reload()
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -510,7 +536,12 @@ function actualizarInformacionClients() {
     }
 
 }
-//==================================================messages=========================        
+
+//==================================================messages=========================
+$(document).ready(function(){
+    traerInformacionMessages();
+});
+
 function traerInformacionMessages() {
     $.ajax({
         url: "http://localhost:8080/api/Message/all",
@@ -524,15 +555,16 @@ function traerInformacionMessages() {
 }
 
 function pintarRespuestaMessages(respuesta) {
+    let myTable = `<div class=""container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable+=  `<div class="card m-2" style="width: 18rem;" >
+                        <div class="card-body">
+                          <h5 class="card-title">${respuesta[i].messageText}</h5>
+                        <button class="btn btn-danger" onclick = "obtenerItemEspecificoMessages(${respuesta[i].idMessage})">Editar</button>
+                        <button class="btn btn-danger" onclick = "borrarInformacionMessages(${respuesta[i].idMessage})">Eliminar</button>
+                  </div>
+            </div>`
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].idMessage + "</td>";
-        myTable += "<td>" + respuesta[i].messageText + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoMessages(" +  respuesta[i].idMessage + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionMessages(" +  respuesta[i].idMessage + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
     }
     myTable += "</table>";
     $("#resultado4").html(myTable);
@@ -650,6 +682,8 @@ function actualizarInformacionMessages() {
             $("#Mid").val();
             $("#MmessageText").val();
 
+            alert("Se actualizo correctamente");
+            window.location.reload()
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -668,6 +702,11 @@ function actualizarInformacionMessages() {
 }
 
 //======================================================reservations=====================
+$(document).ready(function(){
+    traerInformacionReservations();
+});
+
+
 function traerInformacionReservations() {
     $.ajax({
         url: "http://localhost:8080/api/Reservation/all",
@@ -682,19 +721,20 @@ function traerInformacionReservations() {
 
 function pintarRespuestaReservations(respuesta) {
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].idReservation + "</td>";
-        myTable += "<td>" + respuesta[i].startDate + "</td>";
-        myTable += "<td>" + respuesta[i].devolutionDate + "</td>";
-        myTable += "<td>" + respuesta[i].status + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoReservations(" +  respuesta[i].idReservation + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionReservations(" +  respuesta[i].idReservation + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
+    let myTable = `<div class=""container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable+=  `<div class="card m-2" style="width: 18rem;" >
+                        <div class="card-body">
+                          <h5 class="card-title">${respuesta[i].startDate}</h5>
+                          <h5 class="card-title">${respuesta[i].devolutionDate}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${respuesta[i].status}</h6>
+                        <button class="btn btn-danger" onclick = "obtenerItemEspecificoReservations(${respuesta[i].idReservation})">Editar</button>
+                        <button class="btn btn-danger" onclick = "borrarInformacionReservations(${respuesta[i].idReservation})">Eliminar</button>
+                  </div>
+            </div>`
     }
     myTable += "</table>";
-    $("#resultado5").html(myTable);
+    $("#resultado6").html(myTable);
 }
 
 function guardarInformacionReservations() {
@@ -812,10 +852,12 @@ function actualizarInformacionReservations() {
 
             $("#miResultado").empty();
             $("#Rid").val();
-            $("#RstartDateate").val();
+            $("#RstartDate").val();
             $("#RdevolutionDate").val();
             $("#Rstatus").val();
 
+            alert("Se actualizo correctamente");
+            window.location.reload()
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
@@ -834,6 +876,10 @@ function actualizarInformacionReservations() {
 }
 
 //===========================================ADMINI===================================================================
+$(document).ready(function(){
+    traerInformacionAdmins();
+});
+
 function traerInformacionAdmins() {
     $.ajax({
         url: "http://localhost:8080/api/Admin/all",
@@ -848,19 +894,20 @@ function traerInformacionAdmins() {
 
 function pintarRespuestaAdmins(respuesta) {
 
-    let myTable = "<table>";
-    for (i = 0; i < respuesta.length; i++) {
-        myTable += "<tr>";
-        myTable += "<td>" + respuesta[i].idAdmin + "</td>";
-        myTable += "<td>" + respuesta[i].name + "</td>";
-        myTable += "<td>" + respuesta[i].email + "</td>";
-        //myTable += "<td>" + respuesta[i].password + "</td>";
-        myTable += "<td><button onclick=\"obtenerItemEspecificoAdmins(" +  respuesta[i].idAdmin + ")\">Editar</button></td>";
-        myTable += "<td><button onclick=\"borrarInformacionAdmins(" +  respuesta[i].idAdmin + ")\">Eliminar</button></td>";
-        myTable += "</tr>";
+    let myTable = `<div class=""container"><div class="row">`;
+    for(i=0;i <respuesta.length;i++){
+        myTable+=  `<div class="card m-2" style="width: 18rem;" >
+                        <div class="card-body">
+                          <h5 class="card-title">${respuesta[i].name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${respuesta[i].email}</h6>
+                        <button class="btn btn-danger" onclick = "obtenerItemEspecificoAdmins(${respuesta[i].idAdmin})">Editar</button>
+                        <button class="btn btn-danger" onclick = "borrarInformacionAdmins(${respuesta[i].idAdmin})">Eliminar</button>
+                  </div>
+            </div>`
     }
-    myTable += "</table>";
-    $("#resultado6").html(myTable);
+    myTable+= "</div></div>";
+    $("#resultado7").append(myTable);
+
 }
 
 function guardarInformacionAdmins() {
@@ -985,6 +1032,8 @@ function actualizarInformacionAdmins() {
             $("#Aemail").val();
             $("#Apassword").val();
 
+            alert("Se actualizo correctamente");
+            window.location.reload()
         },
 
         error: function (jqXHR, textStatus, errorThrown) {
