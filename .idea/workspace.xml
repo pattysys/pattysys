@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81be9677-8432-4e11-8368-3ce66c5d6e85" name="Changes" comment="Se actualizan reportes y mis funciones para reto 5">
+    <list default="true" id="81be9677-8432-4e11-8368-3ce66c5d6e85" name="Changes" comment="se corrige error reporte">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admins.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admins.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clients.html" beforeDir="false" afterPath="$PROJECT_DIR$/Clients.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Messages.html" beforeDir="false" afterPath="$PROJECT_DIR$/Messages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ortopedics.html" beforeDir="false" afterPath="$PROJECT_DIR$/Ortopedics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservations.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reservations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reportes.html" beforeDir="false" afterPath="$PROJECT_DIR$/reportes.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +55,14 @@
       <workItem from="1635656836656" duration="60000" />
       <workItem from="1635686803138" duration="2460000" />
       <workItem from="1635693238866" duration="1842000" />
-      <workItem from="1635697075001" duration="6914000" />
+      <workItem from="1635697075001" duration="6991000" />
+      <workItem from="1635704285554" duration="4306000" />
+      <workItem from="1635769550651" duration="2371000" />
+      <workItem from="1635779892238" duration="1695000" />
+      <workItem from="1635781626720" duration="608000" />
+      <workItem from="1635792157876" duration="4083000" />
+      <workItem from="1635800719664" duration="137000" />
+      <workItem from="1636145039935" duration="382000" />
     </task>
     <task id="LOCAL-00001" summary="Se actualizan reportes y mis funciones para reto 5">
       <created>1635703913055</created>
@@ -56,7 +71,21 @@
       <option name="project" value="LOCAL" />
       <updated>1635703913055</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="se corrige index">
+      <created>1635704215875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1635704215875</updated>
+    </task>
+    <task id="LOCAL-00003" summary="se corrige index">
+      <created>1635704233077</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1635704233077</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,6 +105,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Se actualizan reportes y mis funciones para reto 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se actualizan reportes y mis funciones para reto 5" />
+    <MESSAGE value="se corrige index" />
+    <MESSAGE value="se corrige error reporte" />
+    <option name="LAST_COMMIT_MESSAGE" value="se corrige error reporte" />
   </component>
 </project>
