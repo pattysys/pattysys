@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 function traerInformacionCategorias() {
     $.ajax({
-        url: "http://localhost:8080/api/Category/all",
+        url: "http://129.151.101.200/api/Category/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -45,7 +45,7 @@ function guardarInformacionCategorias() {
             dataType: 'JSON',
             data: JSON.stringify(var2),
 
-            url: "http://localhost:8080/api/Category/save",
+            url: "http://129.151.101.200/api/Category/save",
 
 
             success: function (response) {
@@ -70,7 +70,7 @@ function borrarInformacionCategorias(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Category/' + idElemento,
+        url: 'http://129.151.101.200/api/Category/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
 
@@ -89,7 +89,7 @@ function borrarInformacionCategorias(idElemento) {
 function obtenerItemEspecificoCategorias(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Category/' + idItem,
+        url: 'http://129.151.101.200/api/Category/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -142,7 +142,7 @@ function actualizarInformacionCategorias() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/Category/update',
+        url: 'http://129.151.101.200/api/Category/update',
         dataType: "text",
         async: false,
         data: dataToSend,
@@ -183,7 +183,7 @@ $(document).ready(function(){
 
 function traerInformacionOrtopedics() {
         $.ajax({
-            url: "http://localhost:8080/api/Ortopedic/all",
+            url: "http://129.151.101.200/api/Ortopedic/all",
             type: "GET",
             datatype: "JSON",
             success: function (respuesta) {
@@ -226,7 +226,7 @@ function guardarInformacionOrtopedics() {
             dataType: 'JSON',
             data: JSON.stringify(var3),
 
-            url: "http://localhost:8080/api/Ortopedic/save",
+            url: "http://129.151.101.200/api/Ortopedic/save",
 
 
             success: function (response) {
@@ -251,7 +251,7 @@ function borrarInformacionOrtopedics(idElemento) {
         //JSON= JavaScript Object Notation
         $.ajax({
             dataType: 'json',
-            url: 'http://localhost:8080/api/Ortopedic/' + idElemento,
+            url: 'http://129.151.101.200/api/Ortopedic/' + idElemento,
             type: 'DELETE',
             contentType: 'application/json',
             success: function (response) {
@@ -270,7 +270,7 @@ function borrarInformacionOrtopedics(idElemento) {
 function obtenerItemEspecificoOrtopedics(idItem) {
         $.ajax({
             dataType: 'json',
-            url: 'http://localhost:8080/api/Ortopedic/' + idItem,
+            url: 'http://129.151.101.200/api/Ortopedic/' + idItem,
             type: 'GET',
             success: function (response) {
                 console.log(response);
@@ -323,7 +323,7 @@ function actualizarInformacionOrtopedics() {
         //JSON= JavaScript Object Notation
         $.ajax({
             type: "PUT",
-            url: 'http://localhost:8080/api/Ortopedic/update',
+            url: 'http://129.151.101.200/api/Ortopedic/update',
             dataType: "text",
             async: false,
             data: dataToSend,
@@ -363,7 +363,7 @@ $(document).ready(function(){
 });
 function traerInformacionClients() {
     $.ajax({
-        url: "http://localhost:8080/api/Client/all",
+        url: "http://129.151.101.200/api/Client/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -406,7 +406,7 @@ function guardarInformacionClients() {
         dataType: 'JSON',
         data: JSON.stringify(var4),
 
-        url: "http://localhost:8080/api/Client/save",
+        url: "http://129.151.101.200/api/Client/save",
 
 
         success: function (response) {
@@ -431,7 +431,7 @@ function borrarInformacionClients(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Client/' + idElemento,
+        url: 'http://129.151.101.200/api/Client/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
@@ -450,7 +450,7 @@ function borrarInformacionClients(idElemento) {
 function obtenerItemEspecificoClients(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Client/' + idItem,
+        url: 'http://129.151.101.200/api/Client/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -503,7 +503,7 @@ function actualizarInformacionClients() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/Client/update',
+        url: 'http://129.151.101.200/api/Client/update',
         dataType: "text",
         async: false,
         data: dataToSend,
@@ -544,7 +544,7 @@ $(document).ready(function(){
 
 function traerInformacionMessages() {
     $.ajax({
-        url: "http://localhost:8080/api/Message/all",
+        url: "http://129.151.101.200/api/Message/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -582,7 +582,7 @@ function guardarInformacionMessages() {
         dataType: 'JSON',
         data: JSON.stringify(var5),
 
-        url: "http://localhost:8080/api/Message/save",
+        url: "http://129.151.101.200/api/Message/save",
 
 
         success: function (response) {
@@ -607,7 +607,7 @@ function borrarInformacionMessages(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Message/' + idElemento,
+        url: 'http://129.151.101.200/api/Message/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
@@ -626,7 +626,7 @@ function borrarInformacionMessages(idElemento) {
 function obtenerItemEspecificoMessages(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Message/' + idItem,
+        url: 'http://129.151.101.200/api/Message/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -670,7 +670,7 @@ function actualizarInformacionMessages() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/Message/update',
+        url: 'http://129.151.101.200/api/Message/update',
         dataType: "text",
         async: false,
         data: dataToSend,
@@ -709,7 +709,7 @@ $(document).ready(function(){
 
 function traerInformacionReservations() {
     $.ajax({
-        url: "http://localhost:8080/api/Reservation/all",
+        url: "http://129.151.101.200/api/Reservation/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -750,7 +750,7 @@ function guardarInformacionReservations() {
         contentType: "application/json; charset=utf-8",
         dataType: 'JSON',
         data: JSON.stringify(var6),
-        url: "http://localhost:8080/api/Reservation/save",
+        url: "http://129.151.101.200/api/Reservation/save",
 
         success: function (response) {
             console.log(response);
@@ -773,7 +773,7 @@ function borrarInformacionReservations(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Reservation/' + idElemento,
+        url: 'http://129.151.101.200/api/Reservation/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
@@ -792,7 +792,7 @@ function borrarInformacionReservations(idElemento) {
 function obtenerItemEspecificoReservations(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Reservation/' + idItem,
+        url: 'http://129.151.101.200/api/Reservation/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -842,7 +842,7 @@ function actualizarInformacionReservations() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/Reservation/update',
+        url: 'http://129.151.101.200/api/Reservation/update',
         dataType: "text",
         async: false,
         data: dataToSend,
@@ -882,7 +882,7 @@ $(document).ready(function(){
 
 function traerInformacionAdmins() {
     $.ajax({
-        url: "http://localhost:8080/api/Admin/all",
+        url: "http://129.151.101.200/api/Admin/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -923,7 +923,7 @@ function guardarInformacionAdmins() {
         contentType: "application/json; charset=utf-8",
         dataType: 'JSON',
         data: JSON.stringify(var7),
-        url: "http://localhost:8080/api/Admin/save",
+        url: "http://129.151.101.200/api/Admin/save",
 
 
 
@@ -949,7 +949,7 @@ function borrarInformacionAdmins(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Admin/' + idElemento,
+        url: 'http://129.151.101.200/api/Admin/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (response) {
@@ -968,7 +968,7 @@ function borrarInformacionAdmins(idElemento) {
 function obtenerItemEspecificoAdmins(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/Admin/' + idItem,
+        url: 'http://129.151.101.200/api/Admin/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -1018,7 +1018,7 @@ function actualizarInformacionAdmins() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/Admin/update',
+        url: 'http://129.151.101.200/api/Admin/update',
         dataType: "text",
         async: false,
         data: dataToSend,
